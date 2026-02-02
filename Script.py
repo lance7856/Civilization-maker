@@ -30,11 +30,13 @@ while True:
     elif "war" in action:  
         if random.choice([True, False]):  
             size += 30  
-            money += 20  
+            money += 20
+            poplulation -= 30
             print("Your kingdom expanded!")  
         else:  
             size -= 30  
-            stability -= 20  
+            stability -= 20
+            poplulation -= 50
             print("Expansion failed, your kingdom shrank!")  
 
     elif "inflation" in action:  
