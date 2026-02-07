@@ -27,8 +27,8 @@ while True:
         population += 35  
         stability += 5  
 
-    elif "war" in action:  
-      if random.choice([True, False]):  
+ elif "war" in action:  
+     if random.choice([True, False]):  
         size += 30  
         money += 20
         population -= 30
