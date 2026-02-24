@@ -48,7 +48,7 @@ while True:
         money -= 40  
         stability += 30 
 
-   if action.startswith("build"):
+    elif action.startswith("build"):
         print("The structure has been built")
         structures += 1
         money -= 20
