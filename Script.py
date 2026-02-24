@@ -47,8 +47,8 @@ while True:
     elif "reform" in action:  
         money -= 40  
         stability += 30 
-        
-    elif "build structure" in action:
+
+   if action.startswith("build"):
         print("The structure has been built")
         structures += 1
         money -= 20
