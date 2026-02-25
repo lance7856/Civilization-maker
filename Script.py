@@ -52,6 +52,7 @@ def game():
                 stability -= 50
                 population -= 50
                 structures -= 1
+                print("Your kingdom suffered a catastrophic loss!")
             else:
             	population = 0
             	stability = 0
