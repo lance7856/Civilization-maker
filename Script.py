@@ -29,7 +29,7 @@ def game():
             population += 35
             stability += 5
 
-        elif action == "war":
+        elif "war" in action:
             if random.choice([True, False]):
                 size += 30
                 money += 20
