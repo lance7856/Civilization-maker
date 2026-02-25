@@ -30,16 +30,32 @@ def game():
             stability += 5
 
         elif "war" in action:
-            if random.choice([True, False]):
+            outcome = random.choice(["Super_win", "Win", "Lose", "Super_lose", "kingdom_done",])
+            if outcome == "Super_win":
+            	structures += 1
+            	size += 100
+            	population += 30
+            	stability = 100
+            	print("you’ve conquored the kingdom")
+            elif outcome == "Win":
                 size += 30
                 money += 20
                 population -= 30
                 print("Your kingdom expanded!")
-            else:
-                size -= 30
-                stability -= 20
+            elif outcome == "Lose":
+            	population -= 20
+            	size -= 15
+            	stability -= 20
+            	print("your kingdom lost the war")
+            elif outcome == "Super_lose":
+                size -= 50
+                stability -= 50
                 population -= 50
-                print("Expansion failed, your kingdom shrank!")
+                structures -= 1
+            else:
+            	population = 0
+            	stability = 0
+            	size = 0
 
         elif action == "inflation":
             money += 100
@@ -50,9 +66,12 @@ def game():
             stability += 30
 
         elif action.startswith("build"):
-            print("The structure has been built")
-            structures += 1
-            money -= 20
+        	if money > 20:
+        		structures += 1
+        		money -= 20
+        		print("the structure has been built")
+        	else:
+        		print("not enough money")
 
         else:
             print("Nothing happened")
@@ -68,8 +87,11 @@ def game():
         size = max(0, size)
         money = max(0, money)
         stability = max(0, min(stability, 100))
+        structures = max(0, structures)
 
         turn += 1
+        #taxes
+        money += 5
         print(f"\nTurn: {turn}")
         print(f"Population: {population}, Size: {size}, Money: {money}, Stability: {stability}, Structures: {structures}")
 
