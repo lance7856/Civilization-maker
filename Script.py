@@ -67,7 +67,7 @@ def game():
             stability += 30
 
         elif action.startswith("build"):
-        	if money > 20:
+        	if money >= 20:
         		structures += 1
         		money -= 20
         		print("the structure has been built")
