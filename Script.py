@@ -17,11 +17,7 @@ def game():
         action = input("Do something: ").lower()
         print(f"You did {action}")
 
-        if action == "famine":
-            population -= 20
-            stability -= 10
-
-        elif action == "feed":
+        if action == "feed":
             population += 25
             money -= 10
 
@@ -30,23 +26,23 @@ def game():
             stability += 5
 
         elif "war" in action:
-            outcome = random.choice(["Super_win", "Win", "Lose", "Super_lose", "kingdom_done",])
+            outcome = random.choice(["Super_win", "Win", "Lose", "Super_lose", "kingdom_done"])
             if outcome == "Super_win":
-            	structures += 1
-            	size += 100
-            	population += 30
-            	stability = 100
-            	print("you’ve conquored the kingdom")
+                structures += 1
+                size += 100
+                population += 30
+                stability = 100
+                print("You’ve conquered the kingdom!")
             elif outcome == "Win":
                 size += 30
                 money += 20
                 population -= 30
                 print("Your kingdom expanded!")
             elif outcome == "Lose":
-            	population -= 20
-            	size -= 15
-            	stability -= 20
-            	print("your kingdom lost the war")
+                population -= 20
+                size -= 15
+                stability -= 20
+                print("Your kingdom lost the war")
             elif outcome == "Super_lose":
                 size -= 50
                 stability -= 50
@@ -54,9 +50,10 @@ def game():
                 structures -= 1
                 print("Your kingdom suffered a catastrophic loss!")
             else:
-            	population = 0
-            	stability = 0
-            	size = 0
+                population = 0
+                stability = 0
+                size = 0
+                print("Your kingdom was completely destroyed!")
 
         elif action == "inflation":
             money += 100
@@ -67,21 +64,25 @@ def game():
             stability += 30
 
         elif action.startswith("build"):
-        	if money >= 20:
-        		structures += 1
-        		money -= 20
-        		print("the structure has been built")
-        	else:
-        		print("not enough money")
+            if money >= 20:
+                structures += 1
+                money -= 20
+                print("The structure has been built")
+            else:
+                print("Not enough money")
 
         else:
             print("Nothing happened")
 
-        # 🎲 Random plague event (separate from action system)
+        # 🎲 Random plague event (fixed indentation)
         if random.randint(1, 10) == 1:
             print("A mysterious plague hit your kingdom!")
             population -= 20
             stability -= 10
+        elif random.randint(1, 15) == 1:
+            print("A severe disaster struck!")
+            population -= 20
+            stability -= 20
 
         # Prevent negatives / limit stability
         population = max(0, population)
@@ -91,8 +92,9 @@ def game():
         structures = max(0, structures)
 
         turn += 1
-        #taxes
+        # Taxes
         money += 5
+
         print(f"\nTurn: {turn}")
         print(f"Population: {population}, Size: {size}, Money: {money}, Stability: {stability}, Structures: {structures}")
 
